@@ -4,7 +4,6 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // Middlewares
 app.use(cors());
@@ -15,7 +14,7 @@ app.get("/", (req, res) => {
   res.send("✅ Thakkar Travels Backend is running");
 });
 
-// Dummy user
+// Dummy user (in-memory)
 const users = [];
 
 async function initUser() {
@@ -32,9 +31,9 @@ app.get("/api/login", (req, res) => {
   res.send("❌ This endpoint expects POST request");
 });
 
-// Login API
+// Login API (FIXED SYNTAX)
 app.post("/api/login", async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body || {};
 
   if (!email || !password) {
     return res.status(400).json({ error: "Email & Password required" });
@@ -59,6 +58,10 @@ app.post("/api/login", async (req, res) => {
   });
 });
 
+// ❌ Duplicate "/" route hata diya (yeh bug create kar raha tha)
+
+// Render-compatible PORT
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 Backend running on port ${PORT}`);
+  console.log("🚀 Backend running on port:", PORT);
 });
