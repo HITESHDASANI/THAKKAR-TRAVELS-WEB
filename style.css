@@ -18,8 +18,16 @@ body {
 }
 
 .logo {
-    width: 100px;
-    margin-bottom: 20px;
+    max-width: 140px;
+  display: block;
+  margin: 0 auto 12px;
+}.login-card {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 24px 28px 28px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 h2 {
@@ -59,4 +67,5 @@ button:hover {
     margin-top: 20px;
     font-size: 12px;
     color: #888;
+
 }
